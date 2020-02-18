@@ -7,7 +7,8 @@ class Environment:
             'TOBAIBITO_MANA_R': 0,
             'TOBAIBITO_MANA_G': 93,
             'TOBAIBITO_MANA_B': 194,
-            'TOBAIBITO_MANA_PIXEL_SHORTCUT': 70
+            'TOBAIBITO_MANA_PIXEL_SHORTCUT': 70,
+            'TOBAIBITO_AUTO_POTION_MANA': 90
         }
         for i in self.variables.keys():
             self.variables[i] = Variable(i)
@@ -49,6 +50,9 @@ class Environment:
 
     def get_mana_pixel_shortcut(self):
         return int(self.get('TOBAIBITO_MANA_PIXEL_SHORTCUT'))
+
+    def get_auto_potion_mana(self):
+        return int(self.get('TOBAIBITO_AUTO_POTION_MANA'))
 
     def show(self):
         s = ""

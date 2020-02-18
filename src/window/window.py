@@ -19,19 +19,14 @@ class Window:
         self.height = geometry[3]
 
     def process_interface(self):
-
         i_didnt_find_everything_in_the_interface = True
         i_found_the_mana = False
-
         pixel_x = self.screen_x
         pixel_mana_y = self.environment.get_mana_pixel_shortcut()
         pixel_end_width = self.screen_x + self.width - 1
-        
         while i_didnt_find_everything_in_the_interface:
-
             if i_found_the_mana == False:
                 pixel = Pixel(pixel_x, pixel_mana_y)
-                pixel.print_info()
                 if pixel.its_a_pixel_of_mana():
                     i_found_the_mana = True
                     self.mana = Mana(pixel_x, pixel_mana_y)
@@ -40,7 +35,6 @@ class Window:
                         pixel_mana = Pixel(pixel_mana_x + i, pixel_mana_y)
                         if pixel_mana.its_a_pixel_of_mana() == False:
                             i_found_the_mana = False
-
             if i_found_the_mana == True:
                 i_didnt_find_everything_in_the_interface = False
             elif pixel_x == pixel_end_width and i_didnt_find_everything_in_the_interface:
@@ -54,13 +48,15 @@ class Window:
         self.process_interface()
         self.print_info()
     
+    def observe(self):
+        self.mana.observe()
+
     def print_info(self):
         print("Window:")
         print("screen_x -> ", self.screen_x)
         print("screen_y -> ", self.screen_y)
         print("width -> ", self.width)
         print("height -> ", self.height)
-
 
 # import gtk
 # import wnck
