@@ -3,7 +3,10 @@ from config.variable import Variable
 class Environment:
     def __init__(self):
         self.variables = {
-            'TOBAIBITO_WINDOW_NAME': None
+            'TOBAIBITO_WINDOW_NAME': None,
+            'TOBAIBITO_MANA_R': 0,
+            'TOBAIBITO_MANA_G': 93,
+            'TOBAIBITO_MANA_B': 194
         }
         for i in self.variables.keys():
             self.variables[i] = Variable(i)
@@ -33,6 +36,15 @@ class Environment:
     
     def get_window_name(self):
         return self.get('TOBAIBITO_WINDOW_NAME')
+
+    def get_mana_r(self):
+        return self.get('TOBAIBITO_MANA_R')
+    
+    def get_mana_g(self):
+        return self.get('TOBAIBITO_MANA_G')
+
+    def get_mana_b(self):
+        return self.get('TOBAIBITO_MANA_B')
 
     def show(self):
         s = ""
