@@ -22,6 +22,18 @@ class Pixel:
             return True
         return False
     
+    def its_a_pixel_of_life(self):
+        dark = self.equals(179, 133, 133)
+        red = self.equals(225, 133, 133)
+        red2 = self.equals(225, 156, 156)
+        yellow = self.equals(230, 207, 137)
+        ok1 = self.equals(186, 210, 135)
+        full = self.equals(133, 225, 133)
+        if dark or red or red2 or yellow or ok1 or full:
+            return True
+        else:
+            return False
+
     def its_a_pixel_of_mana(self):
         return self.equals(self.environment.get_mana_r(), self.environment.get_mana_g(), self.environment.get_mana_b())
 
