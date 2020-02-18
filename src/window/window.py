@@ -1,9 +1,5 @@
-# import gtk
-from gi.repository import Gtk
-import gi
-gi.require_version('Wnck', '3.0')
-from gi.repository import Wnck
-# import wnck
+import gtk
+import wnck
 import time
 # import pygame
 # from Xlib import display
@@ -17,14 +13,18 @@ class Window:
     def __init__(self):
         self.environment = Environment()
 
+    def map(self):
+        self.focus()
+
     def focus(self):
-        screen = Wnck.screen_get_default()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
+        screen = wnck.screen_get_default()
+        while gtk.events_pending():
+            gtk.main_iteration()
         windows = screen.get_windows()
         for w in windows:
             if self.environment.get_window_name() in w.get_name():
                 w.activate(int(time.time()))
+                
         cicle = 0
         # pygame.init()
         # pygame.display.set_mode((1000, 1000))
@@ -41,8 +41,8 @@ class Window:
             # (39, 38, 38) vazio
             # rgb(0, 56, 116) cheio
             data = Xlib.display.Display().screen().root.query_pointer()._data
-            print(data["root_x"], data["root_y"])
-            print(self.get_pixel_colour(data["root_x"], data["root_y"]))
+            print data["root_x"], data["root_y"]
+            print self.get_pixel_colour(data["root_x"], data["root_y"])
 
             # y = 943
             y = 890
@@ -53,13 +53,13 @@ class Window:
             start_live = self.get_pixel_colour(359, y)
             all_live = self.get_pixel_colour(927, y)
 
-            if start_live[0] is not 0 or start_live[1] is not 175 or start_live[2] is not 0: # 100%
-                if start_live[0] is not 184 or start_live[1] is not 140 or start_live[2] is not 8: # 50%
-                    print("Cant see LIVE!!! -> ", start_live)
+            if start_live[0] <> 0 or start_live[1] <> 175 or start_live[2] <> 0: # 100%
+                if start_live[0] <> 184 or start_live[1] <> 140 or start_live[2] <> 8: # 50%
+                    print "Cant see LIVE!!! -> ", start_live
 
             # need heal
             if all_live[0] == 37 and all_live[1] == 37 and all_live[2] == 36:
-                print("f1")
+                print "f1"
                 # keyboard.press(Key.f1)
 
                 # live 50 exura vita
@@ -69,11 +69,11 @@ class Window:
             # 1060 941
             all_mana = self.get_pixel_colour(1050, y)
             if all_mana[0] == 35 and all_mana[1] == 35 and all_mana[2] == 35:
-                print("f3")
+                print "f3"
                 keyboard.press(Key.f3)
                 keyboard.release(Key.f3)
             else:
-                print("all_mana", all_mana)
+                print "all_mana", all_mana
 
             # start_live = self.get_pixel_colour(359, 943)
             # if start_live[0] <> 0 or start_live[1] <> 175 or start_live[2] <> 0:
@@ -81,7 +81,7 @@ class Window:
 
             time.sleep(0.51)
             cicle += 1
-    
+
     def get_pixel_colour(self, i_x, i_y):
         o_x_root = Xlib.display.Display().screen().root
         o_x_image = o_x_root.get_image(i_x, i_y, 1, 1, Xlib.X.ZPixmap, 0xffffffff)

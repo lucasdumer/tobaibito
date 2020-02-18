@@ -1,8 +1,14 @@
-from window import Window
+import time
+from computer import Computer
 
 class Bot:
     def __init__(self):
-        self.window = Window()
+        self.computer = Computer()
 
     def start(self):
-        self.window.focus()
+        windows = self.computer.get_windows()
+        i = 0
+        while True:
+            print(i)
+            time.sleep(0.51)
+            i += 1
