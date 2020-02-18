@@ -1,93 +1,113 @@
-import gtk
-import wnck
 import time
-# import pygame
-# from Xlib import display
-from config.environment import Environment
-import PIL.Image # python-imaging
-import PIL.ImageStat # python-imaging
-import Xlib.display # python-xlib
-from pynput.keyboard import Key, Controller
+
+# import gtk
+# import wnck
+# # import pygame
+# # from Xlib import display
+# from config.environment import Environment
+# import PIL.Image # python-imaging
+# import PIL.ImageStat # python-imaging
+# import Xlib.display # python-xlib
+# from pynput.keyboard import Key, Controller
 
 class Window:
-    def __init__(self):
-        self.environment = Environment()
+    def __init__(self, screen):
+        self.screen = screen
+
+    def focus(self):
+        self.screen.activate(int(time.time()))
+
+    def process_geometry(self):
+        geometry = self.screen.get_geometry()
+        self.screen_x = geometry[0]
+        self.screen_y = geometry[1]
+        self.width = geometry[2]
+        self.height = geometry[3]
 
     def map(self):
         self.focus()
+        self.process_geometry()
+        self.print_info()
+    
+    def print_info(self):
+        print("Window:")
+        print("screen_x -> ", self.screen_x)
+        print("screen_y -> ", self.screen_y)
+        print("width -> ", self.width)
+        print("height -> ", self.height)
 
-    def focus(self):
-        screen = wnck.screen_get_default()
-        while gtk.events_pending():
-            gtk.main_iteration()
-        windows = screen.get_windows()
-        for w in windows:
-            if self.environment.get_window_name() in w.get_name():
-                w.activate(int(time.time()))
+    # def focus(self):
+    #     screen = wnck.screen_get_default()
+    #     while gtk.events_pending():
+    #         gtk.main_iteration()
+    #     windows = screen.get_windows()
+    #     for w in windows:
+    #         if self.environment.get_window_name() in w.get_name():
+    #             w.activate(int(time.time()))
                 
-        cicle = 0
-        # pygame.init()
-        # pygame.display.set_mode((1000, 1000))
-        keyboard = Controller()
-        while True:
-            print("\nStart cicle!")
-            print(cicle)
+    #     cicle = 0
+    #     # pygame.init()
+    #     # pygame.display.set_mode((1000, 1000))
+    #     keyboard = Controller()
+    #     while True:
+    #         print("\nStart cicle!")
+    #         print(cicle)
 
-            # print self.get_pixel_colour(1000, 1000) azul escuro 60 60 61
-            # print self.get_pixel_colour(900, 1000) vermelho 61 61 61
-            # mouse_pos = pygame.mouse.get_pos()
-            # print mouse_pos
-            # 994 928
-            # (39, 38, 38) vazio
-            # rgb(0, 56, 116) cheio
-            data = Xlib.display.Display().screen().root.query_pointer()._data
-            print data["root_x"], data["root_y"]
-            print self.get_pixel_colour(data["root_x"], data["root_y"])
+    #         # print self.get_pixel_colour(1000, 1000) azul escuro 60 60 61
+    #         # print self.get_pixel_colour(900, 1000) vermelho 61 61 61
+    #         # mouse_pos = pygame.mouse.get_pos()
+    #         # print mouse_pos
+    #         # 994 928
+    #         # (39, 38, 38) vazio
+    #         # rgb(0, 56, 116) cheio
+    #         data = Xlib.display.Display().screen().root.query_pointer()._data
+    #         print data["root_x"], data["root_y"]
+    #         print self.get_pixel_colour(data["root_x"], data["root_y"])
 
-            # y = 943
-            y = 890
-            # 359 943
-            # 927 943
-            # 568 = 100%
-            # 5.68 = 1%
-            start_live = self.get_pixel_colour(359, y)
-            all_live = self.get_pixel_colour(927, y)
+    #         # y = 943
+    #         y = 890
+    #         # 359 943
+    #         # 927 943
+    #         # 568 = 100%
+    #         # 5.68 = 1%
+    #         start_live = self.get_pixel_colour(359, y)
+    #         all_live = self.get_pixel_colour(927, y)
 
-            if start_live[0] <> 0 or start_live[1] <> 175 or start_live[2] <> 0: # 100%
-                if start_live[0] <> 184 or start_live[1] <> 140 or start_live[2] <> 8: # 50%
-                    print "Cant see LIVE!!! -> ", start_live
+    #         if start_live[0] <> 0 or start_live[1] <> 175 or start_live[2] <> 0: # 100%
+    #             if start_live[0] <> 184 or start_live[1] <> 140 or start_live[2] <> 8: # 50%
+    #                 print "Cant see LIVE!!! -> ", start_live
 
-            # need heal
-            if all_live[0] == 37 and all_live[1] == 37 and all_live[2] == 36:
-                print "f1"
-                # keyboard.press(Key.f1)
+    #         # need heal
+    #         if all_live[0] == 37 and all_live[1] == 37 and all_live[2] == 36:
+    #             print "f1"
+    #             # keyboard.press(Key.f1)
 
-                # live 50 exura vita
-                # live 70 exura gran
-                # live 85 exura
+    #             # live 50 exura vita
+    #             # live 70 exura gran
+    #             # live 85 exura
 
-            # 1060 941
-            all_mana = self.get_pixel_colour(1050, y)
-            if all_mana[0] == 35 and all_mana[1] == 35 and all_mana[2] == 35:
-                print "f3"
-                keyboard.press(Key.f3)
-                keyboard.release(Key.f3)
-            else:
-                print "all_mana", all_mana
+    #         # 1060 941
+    #         all_mana = self.get_pixel_colour(1050, y)
+    #         if all_mana[0] == 35 and all_mana[1] == 35 and all_mana[2] == 35:
+    #             print "f3"
+    #             keyboard.press(Key.f3)
+    #             keyboard.release(Key.f3)
+    #         else:
+    #             print "all_mana", all_mana
 
-            # start_live = self.get_pixel_colour(359, 943)
-            # if start_live[0] <> 0 or start_live[1] <> 175 or start_live[2] <> 0:
-            #     print "Cant see -> live_!"
+    #         # start_live = self.get_pixel_colour(359, 943)
+    #         # if start_live[0] <> 0 or start_live[1] <> 175 or start_live[2] <> 0:
+    #         #     print "Cant see -> live_!"
 
-            time.sleep(0.51)
-            cicle += 1
+    #         time.sleep(0.51)
+    #         cicle += 1
 
-    def get_pixel_colour(self, i_x, i_y):
-        o_x_root = Xlib.display.Display().screen().root
-        o_x_image = o_x_root.get_image(i_x, i_y, 1, 1, Xlib.X.ZPixmap, 0xffffffff)
-        o_pil_image_rgb = PIL.Image.frombytes("RGB", (1, 1), o_x_image.data, "raw", "BGRX")
-        lf_colour = PIL.ImageStat.Stat(o_pil_image_rgb).mean
-        return tuple(map(int, lf_colour))
+    # def get_pixel_colour(self, i_x, i_y):
+    #     o_x_root = Xlib.display.Display().screen().root
+    #     o_x_image = o_x_root.get_image(i_x, i_y, 1, 1, Xlib.X.ZPixmap, 0xffffffff)
+    #     o_pil_image_rgb = PIL.Image.frombytes("RGB", (1, 1), o_x_image.data, "raw", "BGRX")
+    #     lf_colour = PIL.ImageStat.Stat(o_pil_image_rgb).mean
+    #     return tuple(map(int, lf_colour))
 
     # def get_pixel_colour(self, i_x, i_y):
 	#     o_gdk_pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, 1, 1)
