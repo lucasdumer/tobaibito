@@ -18,8 +18,5 @@ class Bot:
         #     pixel = Pixel(mouse.get_x(), mouse.get_y())
         #     pixel.print_info()
 
-        #     pixel = Pixel(1467, 931)
-        #     pixel.print_info()
-
         #     time.sleep(0.51)
         #     i += 1

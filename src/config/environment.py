@@ -7,7 +7,7 @@ class Environment:
             'TOBAIBITO_MANA_R': 0,
             'TOBAIBITO_MANA_G': 93,
             'TOBAIBITO_MANA_B': 194,
-            'TOBAIBITO_MANA_PIXEL_SHORTCUT': 931
+            'TOBAIBITO_MANA_PIXEL_SHORTCUT': 70
         }
         for i in self.variables.keys():
             self.variables[i] = Variable(i)

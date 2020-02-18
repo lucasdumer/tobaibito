@@ -1,6 +1,7 @@
 import time
 from pixel import Pixel
 from config.environment import Environment
+from mana import Mana
 
 class Window:
     def __init__(self, screen):
@@ -20,33 +21,30 @@ class Window:
     def process_interface(self):
 
         i_didnt_find_everything_in_the_interface = True
-        i_didnt_get_to_the_end_of_the_interface = True
         i_found_the_mana = False
 
         pixel_x = self.screen_x
-        pixel_y = self.environment.get_mana_pixel_shortcut()
+        pixel_mana_y = self.environment.get_mana_pixel_shortcut()
         pixel_end_width = self.screen_x + self.width - 1
-        pixel_end_height = self.screen_y + self.height - 1
         
-        while i_didnt_find_everything_in_the_interface and i_didnt_get_to_the_end_of_the_interface:
+        while i_didnt_find_everything_in_the_interface:
 
-            pixel = Pixel(pixel_x, pixel_y)
-            pixel.print_info()
-            if pixel.its_a_pixel_of_mana():
-                i_found_the_mana = True
-                pixel_mana_x = pixel_x + 1
-                for i in range(50):
-                    pixel_mana = Pixel(pixel_mana_x + i, pixel_y)
-                    if pixel_mana.its_a_pixel_of_mana() == False:
-                        i_found_the_mana = False
+            if i_found_the_mana == False:
+                pixel = Pixel(pixel_x, pixel_mana_y)
+                pixel.print_info()
+                if pixel.its_a_pixel_of_mana():
+                    i_found_the_mana = True
+                    self.mana = Mana(pixel_x, pixel_mana_y)
+                    pixel_mana_x = pixel_x + 1
+                    for i in range(80):
+                        pixel_mana = Pixel(pixel_mana_x + i, pixel_mana_y)
+                        if pixel_mana.its_a_pixel_of_mana() == False:
+                            i_found_the_mana = False
 
             if i_found_the_mana == True:
                 i_didnt_find_everything_in_the_interface = False
-            elif pixel_x == pixel_end_width and pixel_y <> pixel_end_height:
-                pixel_x = self.screen_x
-                pixel_y = pixel_y + 1
-            elif pixel_x == pixel_end_width and pixel_y == pixel_end_height:
-                i_didnt_get_to_the_end_of_the_interface = False
+            elif pixel_x == pixel_end_width and i_didnt_find_everything_in_the_interface:
+                raise Exception("I didn't find everything in the interface!")
             else:
                 pixel_x = pixel_x + 1
 
