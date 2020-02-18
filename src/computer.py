@@ -2,10 +2,12 @@ import wnck
 import gtk
 from config.environment import Environment
 from window.window import Window
+from mouse import Mouse
 
 class Computer:
     def __init__(self):
         self.environment = Environment()
+        self.mouse = Mouse()
         
     def get_windows(self):
         screen = wnck.screen_get_default()
@@ -19,3 +21,6 @@ class Computer:
                 window.map()
                 windows.append(window)
         return windows
+    
+    def get_mouse(self):
+        return self.mouse
