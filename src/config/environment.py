@@ -6,7 +6,8 @@ class Environment:
             'TOBAIBITO_WINDOW_NAME': None,
             'TOBAIBITO_MANA_R': 0,
             'TOBAIBITO_MANA_G': 93,
-            'TOBAIBITO_MANA_B': 194
+            'TOBAIBITO_MANA_B': 194,
+            'TOBAIBITO_MANA_PIXEL_SHORTCUT': 931
         }
         for i in self.variables.keys():
             self.variables[i] = Variable(i)
@@ -38,13 +39,16 @@ class Environment:
         return self.get('TOBAIBITO_WINDOW_NAME')
 
     def get_mana_r(self):
-        return self.get('TOBAIBITO_MANA_R')
+        return int(self.get('TOBAIBITO_MANA_R'))
     
     def get_mana_g(self):
-        return self.get('TOBAIBITO_MANA_G')
+        return int(self.get('TOBAIBITO_MANA_G'))
 
     def get_mana_b(self):
-        return self.get('TOBAIBITO_MANA_B')
+        return int(self.get('TOBAIBITO_MANA_B'))
+
+    def get_mana_pixel_shortcut(self):
+        return int(self.get('TOBAIBITO_MANA_PIXEL_SHORTCUT'))
 
     def show(self):
         s = ""
