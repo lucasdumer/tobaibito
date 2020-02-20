@@ -25,6 +25,10 @@ class Keyboard:
         self.keyboard.press(Key.f5)
         self.keyboard.release(Key.f5)
 
+    def space(self):
+        self.keyboard.press(Key.space)
+        self.keyboard.release(Key.space)
+
     def execute_bot_confirmation_command(self):
         self.keyboard.press(Key.ctrl)
         time.sleep(0.5)

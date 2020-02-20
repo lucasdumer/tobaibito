@@ -4,6 +4,7 @@ from config.environment import Environment
 from mana import Mana
 from life import Life
 from keyboard import Keyboard
+from battle_list import Battle_list
 
 class Window:
     def __init__(self, screen):
@@ -60,6 +61,8 @@ class Window:
                 raise Exception("I didn't find everything in the interface!")
             else:
                 pixel_x = pixel_x + 1
+        
+        self.battle_list = Battle_list(989, 97)
 
     def map(self):
         self.focus()
@@ -71,6 +74,7 @@ class Window:
     def observe(self):
         self.life.observe()
         self.mana.observe()
+        self.battle_list.observe()
 
     def print_info(self):
         print("Window:")

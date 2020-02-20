@@ -17,4 +17,5 @@ class Bot:
             i += 1
             # mouse.print_info()
             # pixel = Pixel(mouse.get_x(), mouse.get_y())
+            # pixel = Pixel(966, 98)
             # pixel.print_info()
