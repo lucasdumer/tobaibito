@@ -17,31 +17,32 @@ class Pixel:
         self.g = rgb[1]
         self.b = rgb[2]
     
-    def equals(self, r, g, b):
-        if self.r == r and self.g == g and self.b == b:
-            return True
-        return False
+    def equal(self, another_pixel):
+        return self.equalRGB(another_pixel.r, another_pixel.g, another_pixel.b)
+
+    def equalRGB(self, r, g, b):
+        return self.r == r and self.g == g and self.b == b
     
     def its_a_pixel_of_life(self):
-        dark = self.equals(179, 133, 133)
-        red = self.equals(225, 133, 133)
-        red2 = self.equals(225, 156, 156)
-        yellow = self.equals(230, 207, 137)
-        ok1 = self.equals(186, 210, 135)
-        full = self.equals(133, 225, 133)
+        dark = self.equalRGB(179, 133, 133)
+        red = self.equalRGB(225, 133, 133)
+        red2 = self.equalRGB(225, 156, 156)
+        yellow = self.equalRGB(230, 207, 137)
+        ok1 = self.equalRGB(186, 210, 135)
+        full = self.equalRGB(133, 225, 133)
         if dark or red or red2 or yellow or ok1 or full:
             return True
         else:
             return False
 
     def its_a_pixel_of_mana(self):
-        return self.equals(self.environment.get_mana_r(), self.environment.get_mana_g(), self.environment.get_mana_b())
+        return self.equalRGB(self.environment.get_mana_r(), self.environment.get_mana_g(), self.environment.get_mana_b())
     
     def its_a_pixel_of_live_in_battle_list(self):
-        return self.equals(0, 192, 0)
+        return self.equalRGB(0, 192, 0)
 
     def its_a_pixel_atk_target(self):
-        return self.equals(255, 0, 0)
+        return self.equalRGB(255, 0, 0)
 
     def print_info(self):
         print("Pixel:")

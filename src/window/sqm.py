@@ -28,3 +28,34 @@ class Sqm:
         self.pixel90x30 = Pixel(pixel90x, pixel30y)
         self.pixel90x60 = Pixel(pixel90x, pixel60y)
         self.pixel90x90 = Pixel(pixel90x, pixel90y)
+    
+    def equal(self, another_sqm):
+        pixel_equal = 0
+        if self.pixel30x30.equal(another_sqm.pixel30x30):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel30x60.equal(another_sqm.pixel30x60):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel30x90.equal(another_sqm.pixel30x90):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel60x30.equal(another_sqm.pixel60x30):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel60x60.equal(another_sqm.pixel60x60):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel60x90.equal(another_sqm.pixel60x90):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel90x30.equal(another_sqm.pixel90x30):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel90x60.equal(another_sqm.pixel90x60):
+            pixel_equal = pixel_equal + 1
+
+        if self.pixel90x90.equal(another_sqm.pixel90x90):
+            pixel_equal = pixel_equal + 1
+        
+        return pixel_equal >= 8

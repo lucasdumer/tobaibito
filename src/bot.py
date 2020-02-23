@@ -15,7 +15,7 @@ class Bot:
             now = time.time()
             print(now - last_move_time)
             last_move_time = now
-            # time.sleep(0.1)
+            time.sleep(0.1)
             # mouse.print_info()
             # pixel = Pixel(mouse.get_x(), mouse.get_y())
             # pixel.print_info()
