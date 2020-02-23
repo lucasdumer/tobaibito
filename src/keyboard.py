@@ -29,6 +29,22 @@ class Keyboard:
         self.keyboard.press(Key.space)
         self.keyboard.release(Key.space)
 
+    def up(self):
+        self.keyboard.press(Key.up)
+        self.keyboard.release(Key.up)
+
+    def right(self):
+        self.keyboard.press(Key.right)
+        self.keyboard.release(Key.right)
+
+    def down(self):
+        self.keyboard.press(Key.down)
+        self.keyboard.release(Key.down)
+
+    def left(self):
+        self.keyboard.press(Key.left)
+        self.keyboard.release(Key.left)
+
     def execute_bot_confirmation_command(self):
         self.keyboard.press(Key.ctrl)
         time.sleep(0.5)

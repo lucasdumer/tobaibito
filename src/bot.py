@@ -9,13 +9,13 @@ class Bot:
     def start(self):
         windows = self.computer.get_windows()
         mouse = self.computer.get_mouse()
-        i = 0
+        last_move_time = time.time()
         while True:
-            # print(i)
             windows[0].observe()
-            time.sleep(0.51)
-            i += 1
+            now = time.time()
+            print(now - last_move_time)
+            last_move_time = now
+            # time.sleep(0.1)
             # mouse.print_info()
             # pixel = Pixel(mouse.get_x(), mouse.get_y())
-            # pixel = Pixel(966, 98)
             # pixel.print_info()

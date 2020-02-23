@@ -40,7 +40,7 @@ class Pixel:
     def its_a_pixel_of_live_in_battle_list(self):
         return self.equals(0, 192, 0)
 
-    def its_not_a_pixel_atk_target(self):
+    def its_a_pixel_atk_target(self):
         return self.equals(255, 0, 0)
 
     def print_info(self):
