@@ -1,9 +1,46 @@
+from pynput import keyboard
 from pynput.keyboard import Key, Controller
 import time
+from config.environment import Environment
+
+# Key.delete
+# Key.home
+# Key.end
+# Key.page_up
+# Key.page_down
+
+
+def on_press(key):
+    environment = Environment()
+    if key == Key.delete:
+        environment.set('toba_bot_off', '1')
+        environment.set('toba_bot_on_heal_life_mana', '0')
+        environment.set('toba_bot_on_heal_mana_utamo', '0')
+        environment.set('toba_bot_on_heal_mana', '0')
+    
+    if key == Key.home:
+        environment.set('toba_bot_off', '0')
+        environment.set('toba_bot_on_heal_life_mana', '1')
+        environment.set('toba_bot_on_heal_mana_utamo', '0')
+        environment.set('toba_bot_on_heal_mana', '0')
+
+    if key == Key.page_up:
+        environment.set('toba_bot_off', '0')
+        environment.set('toba_bot_on_heal_life_mana', '0')
+        environment.set('toba_bot_on_heal_mana_utamo', '1')
+        environment.set('toba_bot_on_heal_mana', '0')
+
+    if key == Key.page_down:
+        environment.set('toba_bot_off', '0')
+        environment.set('toba_bot_on_heal_life_mana', '0')
+        environment.set('toba_bot_on_heal_mana_utamo', '0')
+        environment.set('toba_bot_on_heal_mana', '1')
 
 class Keyboard:
     def __init__(self):
         self.keyboard = Controller()
+        listener = keyboard.Listener(on_press=on_press)
+        listener.start()
 
     def f1(self):
         self.keyboard.press(Key.f1)
@@ -24,6 +61,10 @@ class Keyboard:
     def f5(self):
         self.keyboard.press(Key.f5)
         self.keyboard.release(Key.f5)
+
+    def f6(self):
+        self.keyboard.press(Key.f6)
+        self.keyboard.release(Key.f6)
 
     def space(self):
         self.keyboard.press(Key.space)

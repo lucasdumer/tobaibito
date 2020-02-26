@@ -65,23 +65,44 @@ class Window:
             else:
                 pixel_x = pixel_x + 1
         
-        self.battle_list = Battle_list(989, 97)
+        # self.battle_list = Battle_list(989, 97)
         self.screen_game = ScreenGame(1140, 103, 600, 428)
 
     def map(self):
         self.focus()
         self.process_geometry()
         self.process_interface()
-        photo = self.screen_game.take_photo()
-        self.world.set_current_location_dp_cp_12_8(photo)
+        # photo = self.screen_game.take_photo()
+        # self.world.set_map_x_y(1, 12, 8) # dpcn
         self.keyboard.execute_bot_confirmation_command()
     
     def observe(self):
-        self.life.observe()
+        toba_bot_on_heal_life_mana = self.environment.get('toba_bot_on_heal_life_mana')
+        toba_bot_on_heal_mana_utamo = self.environment.get('toba_bot_on_heal_mana_utamo')
+        
+        # if toba_bot_on_heal_life_mana == '1' or toba_bot_on_heal_mana_utamo == '1' or self.environment.get('toba_bot_on_heal_mana') == '1':
         self.mana.observe()
-        self.battle_list.observe()
-        photo = self.screen_game.take_photo()
-        self.world.photo_of_where_i_am(photo)
+        
+        if toba_bot_on_heal_life_mana == '1':
+            self.life.observe()
+
+        if toba_bot_on_heal_mana_utamo == '1':
+            self.mana.observe_shild()
+
+        # self.battle_list.observe()
+        # photo = self.screen_game.take_photo()
+        # self.world.photo_of_where_i_am(photo)
+
+        # self.mana.observe()
+        # time.sleep(0.51)
+
+        # self.life.observe()
+        # # self.mana.observe_shild()
+        # self.mana.observe()
+        # time.sleep(2)
+
+        # self.mana.observe()
+        time.sleep(1)
 
     def print_info(self):
         print("Window:")

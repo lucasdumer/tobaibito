@@ -8,16 +8,26 @@ class World:
         self.current_y = 0
         self.dp_cn_map = DpCnMap()
 
-    def set_current_location_dp_cp_12_8(self, photo):
-        self.current_map = 1
-        self.current_x = 12
-        self.current_y = 8
-        self.dp_cn_map.sqms[8][12] = photo
+    def set_map_x_y(self, map, x, y):
+        self.current_map = map
+        self.current_x = x
+        self.current_y = y
+
+    def get_current_map(self):
+        if self.current_map == 1:
+            return self.dp_cn_map
 
     def photo_of_where_i_am(self, photo):
-        for sqms in self.dp_cn_map.sqms:
+        x = -1
+        y = -1
+        for sqms in self.get_current_map().sqms:
+            y = y + 1
             for sqm in sqms:
-                if sqm == 0:
-                    continue
-                elif isinstance(sqm, ScreenGamePhoto):
-                    print(sqm.equal(photo))
+                x = x + 1
+                if isinstance(sqm, ScreenGamePhoto):
+                    if sqm.equal(photo):
+                        self.current_x = x
+                        self.current_y = y
+                        print("true")
+            x = -1
+        print(self.current_x, self.current_y)

@@ -3,6 +3,10 @@ from config.variable import Variable
 class Environment:
     def __init__(self):
         self.variables = {
+            'toba_bot_off': None,
+            'toba_bot_on_heal_life_mana': None,
+            'toba_bot_on_heal_mana_utamo': None,
+            'toba_bot_on_heal_mana': None,
             'TOBAIBITO_WINDOW_NAME': None,
             'TOBAIBITO_LIFE_DARK_R': 179,
             'TOBAIBITO_LIFE_DARK_G': 133,
@@ -50,11 +54,11 @@ class Environment:
         self.variable_must_have_value('MCW_GIT_REMOTE')
 
     def set(self, variable, value):
-        self.check_for_required_variable(variable)
+        # self.check_for_required_variable(variable)
         self.variables[variable].set_value(value)
     
     def get(self, variable):
-        self.check_for_required_variable(variable)
+        # self.check_for_required_variable(variable)
         return self.variables[variable].get_value()
     
     def get_window_name(self):
