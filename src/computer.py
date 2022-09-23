@@ -2,15 +2,15 @@ import wnck
 import gtk
 from config.environment import Environment
 from window.window import Window
-from mouse import Mouse
+#from mouse import Mouse
 
 class Computer:
     def __init__(self):
         self.environment = Environment()
-        self.mouse = Mouse()
+        #self.mouse = Mouse()
         
     def get_windows(self):
-        screen = wnck.screen_get_default()
+        screen = Wnck.screen_get_default()
         while gtk.events_pending():
             gtk.main_iteration()
         screen_windows = screen.get_windows()
@@ -22,5 +22,5 @@ class Computer:
                 windows.append(window)
         return windows
     
-    def get_mouse(self):
-        return self.mouse
+    #def get_mouse(self):
+    #    return self.mouse

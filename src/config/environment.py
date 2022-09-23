@@ -3,7 +3,7 @@ from config.variable import Variable
 class Environment:
     def __init__(self):
         self.variables = {
-            'toba_bot_off': None,
+            'toba_bot_on': None,
             'toba_bot_on_heal_life_mana': None,
             'toba_bot_on_heal_mana_utamo': None,
             'toba_bot_on_heal_mana': None,
