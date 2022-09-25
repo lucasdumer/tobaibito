@@ -7,11 +7,8 @@ import threading
 
 keyboard = Controller()
 
-runa = False
-
 print("bot start")
 def process():
-    global runa
     while True:
         print("===================================")
         print("bot loop start")
@@ -28,9 +25,6 @@ def process():
             print('heala vida mana')
             pyautogui.press("num2")
         else:
-            if runa:
-                keyboard.press('9')
-                runa = False
             print('color_mana=', color_mana)
             if color_mana[0] == 35 and color_mana[1] == 35 and color_mana[2] == 35:
                 print('heala mana')
@@ -43,14 +37,13 @@ def process():
             pyautogui.press("num1")
             
         print("===================================")
-        time.sleep(0.2)
+        time.sleep(1)
 
 threading.Thread(target=process).start()
 
 def on_scroll(x, y, dx, dy):
-    global runa
     if dy > 0:
-        runa = True
+        keyboard.press('9')
     else:
         keyboard.press('0')
     
