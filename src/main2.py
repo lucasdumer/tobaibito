@@ -7,9 +7,11 @@ import threading
 
 keyboard = Controller()
 
+runa = False
 
 print("bot start")
 def process():
+    global runa
     while True:
         print("===================================")
         print("bot loop start")
@@ -19,33 +21,36 @@ def process():
 
         px = ImageGrab.grab().load()
 
-        color_vida_mana = px[645, 11]
+        color_mana = px[1013, 20]
+        color_vida_mana = px[707, 11]
         print('color_vida_mana=', color_vida_mana)
-        if color_vida_mana[0] == 41 and color_vida_mana[1] == 41 and color_vida_mana[2] == 41:
+        if color_vida_mana[0] == 38 and color_vida_mana[1] == 38 and color_vida_mana[2] == 38:
             print('heala vida mana')
             pyautogui.press("num2")
-
-        color_mana = px[1013, 20]
-        print('color_mana=', color_mana)
-        if color_mana[0] == 35 and color_mana[1] == 35 and color_mana[2] == 35:
-            print('heala mana')
-            pyautogui.press("num3")
+        else:
+            if runa:
+                keyboard.press('9')
+                runa = False
+            print('color_mana=', color_mana)
+            if color_mana[0] == 35 and color_mana[1] == 35 and color_mana[2] == 35:
+                print('heala mana')
+                pyautogui.press("num3")
 
         color_vida = px[855, 20]
         print('color_vida=', color_vida)
-
         if color_vida[0] == 41 and color_vida[1] == 41 and color_vida[2] == 41:
             print('heala vida')
             pyautogui.press("num1")
             
         print("===================================")
-        time.sleep(1)
+        time.sleep(0.2)
 
 threading.Thread(target=process).start()
 
 def on_scroll(x, y, dx, dy):
+    global runa
     if dy > 0:
-        keyboard.press('9')
+        runa = True
     else:
         keyboard.press('0')
     
