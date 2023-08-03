@@ -16,29 +16,29 @@ def on_press(key):
             if key.char == '0':
 
                 if subprocess.check_output('xset q | grep LED', shell=True)[65] == 51 :
-                    pyautogui.click(x=854, y=499, button='right')
-                    pyautogui.click(x=854, y=499, button='right')
+                    pyautogui.click(x=838, y=520, button='right')
+                    pyautogui.click(x=838, y=520, button='right')
 
-                    pyautogui.click(x=854, y=430, button='right')
-                    pyautogui.click(x=854, y=430, button='right')
+                    pyautogui.click(x=838, y=452, button='right')
+                    pyautogui.click(x=838, y=452, button='right')
 
-                    pyautogui.click(x=854, y=367, button='right')
-                    pyautogui.click(x=854, y=367, button='right')
+                    pyautogui.click(x=838, y=386, button='right')
+                    pyautogui.click(x=838, y=386, button='right')
 
-                    pyautogui.click(x=927, y=367, button='right')
-                    pyautogui.click(x=927, y=367, button='right')
+                    pyautogui.click(x=904, y=386, button='right')
+                    pyautogui.click(x=904, y=386, button='right')
 
-                    pyautogui.click(x=996, y=367, button='right')
-                    pyautogui.click(x=996, y=367, button='right')
+                    pyautogui.click(x=972, y=386, button='right')
+                    pyautogui.click(x=972, y=386, button='right')
 
-                    pyautogui.click(x=996, y=434, button='right')
-                    pyautogui.click(x=996, y=434, button='right')
+                    pyautogui.click(x=972, y=452, button='right')
+                    pyautogui.click(x=972, y=452, button='right')
 
-                    pyautogui.click(x=996, y=498, button='right')
-                    pyautogui.click(x=996, y=498, button='right')
+                    pyautogui.click(x=972, y=530, button='right')
+                    pyautogui.click(x=972, y=530, button='right')
 
-                    pyautogui.click(x=926, y=497, button='right')
-                    pyautogui.click(x=926, y=497, button='right')
+                    pyautogui.click(x=904, y=530, button='right')
+                    pyautogui.click(x=904, y=530, button='right')
     except Exception as e:
         print("ERROR: 0" +str(e))
         a = 1

@@ -34,53 +34,62 @@ def process():
 
                 px = ImageGrab.grab().load()
 
-                fm = px[685, 20]
-                fmm = px[812, 16]
-                nm = px[1305, 11]
-                fmmm = px[900, 21]
-                nmm = px[1044, 14]
+                fm = px[904, 17]
+                fmm = px[717, 15]
+                nm = px[1029, 14]
+
+                # fmmm = px[900, 21]
+                # nmm = px[1044, 14]
     
                 print('x pont=', px[x, y])
             
-                if fm[0] == 25 and fm[1] == 25 and fm[2] == 25:                    
+                if fm[0] == 29 and fm[1] == 29 and fm[2] == 28:
                     pyautogui.press("1")
 
                 f = False
-                if fmm[0] == 36 and fmm[1] == 36 and fmm[2] == 36:
-                    if nm[0] != 38 and nm[1] == 38 and nm[2] == 38:
-                        pyautogui.press("3")
-                    else:
-                        pyautogui.press("4")
+                if fmm[0] == 49 and fmm[1] == 49 and fmm[2] == 49:
+                    pyautogui.press("3")
                     f = True
 
-                if fmmm[0] == 42 and fmmm[1] == 42 and fmmm[2] == 42 and f == False:
-                    pyautogui.press("4")
+                if nm[0] == 40 and nm[1] == 41 and nm[2] == 41 and f == False:
+                    pyautogui.press("2")
 
-                if nmm[0] == 34 and nmm[1] == 34 and nmm[2] == 34:                    
-                    pyautogui.press("f")
+                # f = False
+                # if fmm[0] == 36 and fmm[1] == 36 and fmm[2] == 36:
+                #     if nm[0] != 38 and nm[1] == 38 and nm[2] == 38:
+                #         pyautogui.press("num3")
+                #     else:
+                #         pyautogui.press("num2")
+                #     f = True
 
-                if e == False:
-                    cp = px[941, 11]
-                    if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
-                        # pyautogui.press("7")
-                        pyautogui.press("3")
+                # if fmmm[0] == 42 and fmmm[1] == 42 and fmmm[2] == 42 and f == False:
+                #     pyautogui.press("4")
 
-                    cp = px[951, 11]
-                    if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
-                        # pyautogui.press("7")
-                        pyautogui.press("3")
+                # if nmm[0] == 34 and nmm[1] == 34 and nmm[2] == 34:                    
+                #     pyautogui.press("f")
 
-                    cp = px[961, 11]
-                    if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
-                        # pyautogui.press("7")
-                        pyautogui.press("3")
+                # if e == False:
+                #     cp = px[941, 11]
+                #     if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
+                #         # pyautogui.press("7")
+                #         pyautogui.press("3")
 
-                    cp = px[971, 11]
-                    if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
-                        # pyautogui.press("7")
-                        pyautogui.press("3")
-                else:
-                    pyautogui.press("5")
+                #     cp = px[951, 11]
+                #     if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
+                #         # pyautogui.press("7")
+                #         pyautogui.press("3")
+
+                #     cp = px[961, 11]
+                #     if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
+                #         # pyautogui.press("7")
+                #         pyautogui.press("3")
+
+                #     cp = px[971, 11]
+                #     if cp[0] == 254 and cp[1] == 0 and cp[2] == 0:
+                #         # pyautogui.press("7")
+                #         pyautogui.press("3")
+                # else:
+                #     pyautogui.press("5")
         except:
             b = 1
         time.sleep(0.5)
